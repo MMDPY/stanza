@@ -347,6 +347,19 @@ class LSTMModel(BaseModel, nn.Module):
                 lines.append("%s %.6g" % (name, torch.norm(param).item()))
         logger.info("\n".join(lines))
 
+    def is_low_decay_parameter(self, name):
+        if name.startswith("delta_embedding"):
+            return True
+        return False
+
+    def base_parameters(self):
+        params = [param for name, param in self.named_parameters() if not self.is_low_decay_parameter(name)]
+        return params
+
+    def low_decay_parameters(self):
+        params = [param for name, param in self.named_parameters() if self.is_low_decay_parameter(name)]
+        return params
+
     def build_char_representation(self, all_word_labels, device, forward):
         CHARLM_START = "\n"
         CHARLM_END = " "
