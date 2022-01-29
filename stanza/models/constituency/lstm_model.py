@@ -350,6 +350,8 @@ class LSTMModel(BaseModel, nn.Module):
     def is_low_decay_parameter(self, name):
         if name.startswith("delta_embedding"):
             return True
+        if name.startswith("partitioned_transformer_module.pattn_encoder"):
+            return True
         return False
 
     def base_parameters(self):
