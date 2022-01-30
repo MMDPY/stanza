@@ -324,7 +324,8 @@ def parse_args(args=None):
 
     # Label Attention
     parser.add_argument('--lattn_d_kv', default=64, type=int, help='Dimension of the key/query vector')
-    parser.add_argument('--lattn_d_proj', default=64, type=int, help='Dimension of the output vector from each label attention head')
+    #parser.add_argument('--lattn_d_proj', default=64, type=int, help='Dimension of the output vector from each label attention head')
+    parser.add_argument('--lattn_d_proj', default=0, type=int, help='Dimension of the output vector from each label attention head')
     parser.add_argument('--lattn_resdrop', default=True, action='store_true', help='Whether or not to use Residual Dropout')
     parser.add_argument('--lattn_pwff', default=True, action='store_true', help='Whether or not to use a Position-wise Feed-forward Layer')
     parser.add_argument('--lattn_q_as_matrix', default=False, action='store_true', help='Whether or not Label Attention uses learned query vectors. False means it does')
