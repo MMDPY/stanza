@@ -96,7 +96,7 @@ def build_optimizer(args, model):
     """
     parameters = [
         {'params': model.base_parameters()},
-        {'params': model.low_decay_parameters(), 'weight_decay': args['weight_decay'] * 0.02}
+        {'params': model.low_decay_parameters(), 'weight_decay': args['weight_decay'] * 0.0}
     ]
     if args['optim'].lower() == 'sgd':
         optimizer = optim.SGD(parameters, lr=args['learning_rate'], momentum=0.9, weight_decay=args['weight_decay'])
